@@ -1,3 +1,4 @@
+import { selectArticleToUpdate } from './../../state/articles.actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getSelectedArticle } from './../../state/articles.selectors';
 import { Observable, tap } from 'rxjs';
@@ -30,5 +31,10 @@ export class ArticleDetailsComponent implements OnInit {
 
   deleteArticle() {
     this.store.dispatch(deleteArticle({ id: this.id }))
+  }
+
+  update() {
+    this.store.dispatch(selectArticleToUpdate({ id: this.id }))
+    this.router.navigateByUrl('/articles/form/' + this.id)
   }
 }

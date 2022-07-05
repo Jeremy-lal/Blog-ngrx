@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature(AUTH_STATE_NAME, authReducer)
+    StoreModule.forFeature(AUTH_STATE_NAME, authReducer),
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

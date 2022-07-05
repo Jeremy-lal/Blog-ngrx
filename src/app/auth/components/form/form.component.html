@@ -1,1 +1,16 @@
-<p>form works!</p>
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+    <ng-content select="h2"></ng-content>
+    <label>
+        Username
+        <input type="text" formControlName="username">
+    </label>
+    <label>
+        Password
+        <input type="password" formControlName="password">
+    </label>
+
+    <ng-content select="button"></ng-content>
+
+    <ng-content select=".error"></ng-content>
+
+</form>

@@ -10,7 +10,14 @@ export const getArticles = createSelector(getArticlesState, (state) => {
     return state.articles;
 });
 
-export const getSelectedArticle = (id: number) => createSelector(getArticlesState, (state) => {
+export const getArticleToUpdateId = createSelector(getArticlesState, (state) => {
+    console.log('bhsjvbhjsdv');
+
+    return state.articleToUpdate;
+});
+
+export const getSelectedArticle = (id: number | null) => createSelector(getArticlesState, (state) => {
+    if (!id) return null
     const article = state.articles.find(el => el.id === id)
     return article ? article : null
 });

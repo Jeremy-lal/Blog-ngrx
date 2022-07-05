@@ -1,7 +1,9 @@
+<button class="action--btn" (click)="update()">Update</button>
+<button class="action--btn" (click)="deleteArticle()">Delete</button>
+
+
 <div *ngIf="(article$ | async ) as article">
-    <h1>{{article.title}}</h1>
+    <h1>{{article.title | titlecase}}</h1>
     <img [src]="article.img" *ngIf='article.img' />
     <p>{{article.content}}</p>
-
-    <button (click)="deleteArticle()">Delete</button>
 </div>

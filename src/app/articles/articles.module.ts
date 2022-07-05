@@ -8,10 +8,13 @@ import { ArticlesFormComponent } from './components/articles-form/articles-form.
 import { ArticleDetailsComponent } from './components/article-details/article-details.component';
 import { articlesReducer } from './state/articles.reducer';
 import { ARTICLES_STATE_NAME } from './state/articles.selectors';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: ArticlesListComponent },
-  { path: ':id', component: ArticleDetailsComponent }
+  { path: 'form', component: ArticlesFormComponent },
+  { path: 'form/:id', component: ArticlesFormComponent },
+  { path: ':id', component: ArticleDetailsComponent },
 ]
 
 @NgModule({
@@ -23,6 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(ARTICLES_STATE_NAME, articlesReducer)
   ]

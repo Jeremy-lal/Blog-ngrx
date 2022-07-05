@@ -1,1 +1,18 @@
-<p>articles-form works!</p>
+<h1>Add Article</h1>
+
+<form [formGroup]="articleForm" (ngSubmit)="submit()">
+    <label>
+        Title
+        <input type="text" formControlName="title" />
+    </label>
+    <label>
+        Content
+        <textarea formControlName="content" cols="30" rows="10"></textarea>
+    </label>
+    <label>
+        Image
+        <input type="text" formControlName="img" />
+    </label>
+
+    <button type="submit" class="action--btn">{{update ? 'Update' : 'Add'}}</button>
+</form>

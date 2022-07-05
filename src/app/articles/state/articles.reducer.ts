@@ -1,4 +1,4 @@
-import { addArticle, deleteArticle, updateArticle } from './articles.actions';
+import { addArticle, deleteArticle, selectArticleToUpdate, updateArticle } from './articles.actions';
 import { createReducer, on } from "@ngrx/store";
 import { ArticlesState, initialState } from "./articles.state";
 
@@ -7,7 +7,7 @@ const _articlesReducer = createReducer(
     on(addArticle, (state, action) => {
         let article = { ...action.article };
 
-        article.id = Math.max(...state.articles.map(el => el.id))
+        article.id = Math.max(...state.articles.map(el => el.id)) + 1
 
         return {
             ...state,
@@ -34,6 +34,13 @@ const _articlesReducer = createReducer(
             articles: updatedArticles,
         };
     }),
+    on(selectArticleToUpdate, (state, { id }) => {
+        return {
+            ...state,
+            articleToUpdate: id,
+        };
+    }),
+
 );
 
 export function articlesReducer(state: ArticlesState, action: any) {
