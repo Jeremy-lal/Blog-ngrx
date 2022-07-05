@@ -10,7 +10,8 @@ nav {
         color: white;
     }
 }
-ul {
+ul,
+div {
     display: flex;
     list-style: none;
     margin-left: 50px;
@@ -25,4 +26,8 @@ ul {
             text-decoration: underline;
         }
     }
+}
+
+div {
+    justify-self: flex-end;
 }

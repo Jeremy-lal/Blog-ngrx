@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -9,11 +10,12 @@ import { ArticleDetailsComponent } from './components/article-details/article-de
 import { articlesReducer } from './state/articles.reducer';
 import { ARTICLES_STATE_NAME } from './state/articles.selectors';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: ArticlesListComponent },
-  { path: 'form', component: ArticlesFormComponent },
-  { path: 'form/:id', component: ArticlesFormComponent },
+  { path: 'form', component: ArticlesFormComponent, canActivate: [AuthGuard] },
+  { path: 'form/:id', component: ArticlesFormComponent, canActivate: [AuthGuard] },
   { path: ':id', component: ArticleDetailsComponent },
 ]
 
@@ -28,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature(ARTICLES_STATE_NAME, articlesReducer)
+    StoreModule.forFeature(ARTICLES_STATE_NAME, articlesReducer),
+    SharedModule
   ]
 })
 export class ArticlesModule { }

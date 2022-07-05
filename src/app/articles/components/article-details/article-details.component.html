@@ -1,5 +1,5 @@
-<button class="action--btn" (click)="update()">Update</button>
-<button class="action--btn" (click)="deleteArticle()">Delete</button>
+<button class="action--btn" (click)="update()" isLogin>Update</button>
+<button class="action--btn" (click)="deleteArticle()" isLogin>Delete</button>
 
 
 <div *ngIf="(article$ | async ) as article">
