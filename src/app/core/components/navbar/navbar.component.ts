@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AppState } from './../../../store/app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
+import { logout } from 'src/app/auth/state/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$ = this.store.select(getCurrentUser)
+  }
+
+  logout() {
+    this.store.dispatch(logout())
   }
 
 }
